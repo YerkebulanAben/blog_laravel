@@ -186,39 +186,32 @@
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="../widgets.html" class="nav-link">
+                        <a href="{{ route('admin.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 Главная
-                                <span class="right badge badge-danger">New</span>
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="category">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
-                                Dashboard
+                                Категории
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="../../index.html" class="nav-link">
+                                <a href="{{ route('admin.categories.index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v1</p>
+                                    <p>Список категорий</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../index2.html" class="nav-link">
+                                <a href="{{ route('admin.categories.create') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v2</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../../index3.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v3</p>
+                                    <p>Новая категория</p>
                                 </a>
                             </li>
                         </ul>
@@ -251,6 +244,18 @@
 <!-- ./wrapper -->
 
 <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
+<script>
+    let listItems = document.querySelectorAll('.nav .nav-treeview .nav-item a');
+    let list = document.querySelector('#category');
+    let locationURL = window.location.protocol + '//' + window.location.host + window.location.pathname;
+    listItems.forEach((item)=>{
+        if(item.href === locationURL){
+            item.classList.add('active');
+            list.classList.add('menu-open');
+            list.firstElementChild.classList.add('active');
+        }
+    });
+</script>
 </body>
 </html>
 
