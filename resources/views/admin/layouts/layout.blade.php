@@ -239,6 +239,29 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item" id="tag">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-edit"></i>
+                            <p>
+                                Статьи
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.posts.index') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Список статей</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.posts.create') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Новая статья</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                 </ul>
             </nav>
@@ -292,6 +315,10 @@
 </div>
 <!-- ./wrapper -->
 
+<script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
 <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
 <script>
     let listItems = document.querySelectorAll('.nav .nav-treeview .nav-item a');
