@@ -195,7 +195,7 @@
                     </li>
                     <li class="nav-item" id="category">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <i class="nav-icon fas fa-archive"></i>
                             <p>
                                 Категории
                                 <i class="right fas fa-angle-left"></i>
