@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Blank Page</title>
+    <title>Admin Panel</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/admin.css') }}">
 </head>
@@ -216,6 +216,29 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item" id="tag">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-tag"></i>
+                            <p>
+                                Теги
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.tags.index') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Список тегов</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.tags.create') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Новый тег</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                 </ul>
             </nav>
@@ -277,7 +300,7 @@
     listItems.forEach((item)=>{
         if(item.href === locationURL){
             item.classList.add('active');
-            list.classList.add('menu-open');
+            item.closest('.nav-treeview').parentElement.classList.add('menu-open');
         }
     });
 </script>

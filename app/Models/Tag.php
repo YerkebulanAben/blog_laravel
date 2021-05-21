@@ -12,6 +12,8 @@ class Tag extends Model
     use HasFactory;
     use HasSlug;
 
+    public $fillable = ['title'];
+
     public function posts(){
         return $this->belongsToMany(Post::class);
     }
@@ -23,6 +25,7 @@ class Tag extends Model
     {
         return SlugOptions::create()
             ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug');
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
     }
 }
