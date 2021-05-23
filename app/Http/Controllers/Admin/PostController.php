@@ -111,7 +111,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        Tag::find($id)->delete();
-        return redirect()->route('admin.tags.index')->with('success', 'Тег удален');
+        $post = Post::find($id);
+        Storage::delete($post->thumbnail);
+        $post->delete();
+        $post->tags()->sync([]);
+
+        return redirect()->route('admin.posts.index')->with('success', 'Статья удалена');
     }
 }
