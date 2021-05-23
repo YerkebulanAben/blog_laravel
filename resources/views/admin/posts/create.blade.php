@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="thumbnail">Avatar</label>
+                            <label for="thumbnail">Изображение</label>
                             <input class="form-control-file" type="file" id="thumbnail" name="thumbnail">
                         </div>
 
