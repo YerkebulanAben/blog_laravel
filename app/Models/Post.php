@@ -11,9 +11,10 @@ class Post extends Model
 {
     use HasFactory;
     use HasSlug;
+    protected $fillable = ['title', 'content', 'description', 'thumbnail', 'category_id'];
 
     public function tags(){
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
     public function category(){
