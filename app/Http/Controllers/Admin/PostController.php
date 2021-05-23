@@ -52,10 +52,7 @@ class PostController extends Controller
 
         $data = $request->all();
 
-        if($request->hasFile('thumbnail')){
-            $folder = date('Y-m-d');
-            $data['thumbnail'] = $request->file('thumbnail')->store("images/$folder");
-        }
+        $data['thumbnail'] = Post::uploadImage($request);
 
         $post = Post::create($data);
         $post->tags()->sync($request->tags);
@@ -98,11 +95,7 @@ class PostController extends Controller
         $data = $request->all();
         $post = Post::find($id);
 
-        if($request->hasFile('thumbnail')){
-            Storage::delete($post->thumbnail);
-            $folder = date('Y-m-d');
-            $data['thumbnail'] = $request->file('thumbnail')->store("images/$folder");
-        }
+        $data['thumbnail'] = Post::uploadImage($request, $post->thumbnail);
 
         $post->update($data);
         $post->tags()->sync($request->tags);
