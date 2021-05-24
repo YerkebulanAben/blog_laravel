@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::prefix('admin')->name('admin.')->group(function (){
+Route::prefix('admin')->name('admin.')->middleware('admin')->group(function (){
    Route::get('/', [MainController::class, 'index'])->name('index');
    Route::resource('/categories', CategoryController::class);
    Route::resource('/tags', TagController::class);
