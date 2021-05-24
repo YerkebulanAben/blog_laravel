@@ -30,4 +30,33 @@ class UserController extends Controller
 
         return redirect()->route('home')->with('success', 'Регистрация прошла успешно');
     }
+
+    public function loginForm(){
+        return view('user.login');
+    }
+
+    public function login(Request $request){
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if(Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ])){
+            if(Auth::user()->is_admin){
+                return redirect()->route('admin.index')->with('success', 'Вы вошли в своб учетную запись');;
+            } else {
+                return redirect()->route('home')->with('success', 'Вы вошли в своб учетную запись');
+            }
+        }
+
+        return redirect()->back()->with('error', 'Неправильный логин или пароль');
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('user.loginForm');
+    }
 }
