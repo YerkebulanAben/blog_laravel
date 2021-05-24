@@ -85,6 +85,7 @@ class CategoryController extends Controller
         if($category->posts->count()){
             return redirect()->route('admin.categories.index')->with('error', 'У категории есть привязанные статьи');
         }
+        $category->delete();
         return redirect()->route('admin.categories.index')->with('success', 'Категория удалена');
     }
 }

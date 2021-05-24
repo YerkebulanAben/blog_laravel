@@ -34,16 +34,16 @@ class Post extends Model
             ->doNotGenerateSlugsOnUpdate();
     }
 
-    public static function uploadImage(Request $request, $image = null)
+    public static function uploadImage(Request $request, $post = null)
     {
         if($request->hasFile('thumbnail')){
-            if($image){
-                Storage::delete($image);
+            if($post){
+                Storage::delete($post->thumbnail);
             }
             $folder = date('Y-m-d');
             return $request->file('thumbnail')->store("images/$folder");
         }
 
-        return null;
+        return $post->thumbnail;
     }
 }
