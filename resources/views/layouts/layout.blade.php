@@ -56,9 +56,11 @@
         </div><!-- end container-fluid -->
     </header><!-- end market-header -->
 
-    @include('layouts.banner')
+    @if(Request::is('/'))
+        @include('layouts.banner')
+    @endif
 
-    <section class="section lb">
+    <section class="section lb @if(!Request::is('/')) m3rem @endif">
         <div class="container">
             <div class="row">
 

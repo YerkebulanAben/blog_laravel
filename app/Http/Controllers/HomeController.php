@@ -10,7 +10,7 @@ class HomeController extends Controller
         return view('post.index');
     }
 
-    public function show($slug){
-
+    public function show(){
+        return view('post.show');
     }
 }

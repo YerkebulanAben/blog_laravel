@@ -20,7 +20,7 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/show/{slug}', [HomeController::class, 'show'])
+Route::get('/show', [HomeController::class, 'show'])
     ->name('post.show');
 
 Route::prefix('admin')->name('admin.')->middleware('admin')->group(function (){
