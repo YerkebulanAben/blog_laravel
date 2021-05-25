@@ -35,17 +35,20 @@ class Post extends Model
             ->doNotGenerateSlugsOnUpdate();
     }
 
-    public static function uploadImage(Request $request, $post = null)
+    public static function uploadImage(Request $request, $image = null)
     {
         if($request->hasFile('thumbnail')){
-            if($post){
-                Storage::delete($post->thumbnail);
-            }
             $folder = date('Y-m-d');
-            return $request->file('thumbnail')->store("images/$folder");
+            $path =  $request->file('thumbnail')->store("images/$folder");
+            if($image){
+                Storage::delete($image);
+                return $path;
+            }
+            return $path;
         }
 
-        return $post->thumbnail;
+        return null;
+
     }
 
     public function getPostDate(){

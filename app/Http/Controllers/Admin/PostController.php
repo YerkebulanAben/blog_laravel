@@ -52,7 +52,12 @@ class PostController extends Controller
 
         $data = $request->all();
 
-        $data['thumbnail'] = Post::uploadImage($request);
+        if($request->hasFile('thumbnail')){
+            $data['thumbnail'] = Post::uploadImage($request);
+        }
+        else {
+            $data['thumbnail'] = null;
+        }
 
         $post = Post::create($data);
         $post->tags()->sync($request->tags);
@@ -95,8 +100,12 @@ class PostController extends Controller
         $data = $request->all();
         $post = Post::find($id);
 
-        $data['thumbnail'] = Post::uploadImage($request, $post);
-
+        if($request->hasFile('thumbnail')){
+            $data['thumbnail'] = Post::uploadImage($request, $post->thumbnail);
+        }
+        else {
+            $data['thumbnail'] = $post->thumbnail;
+        }
         $post->update($data);
         $post->tags()->sync($request->tags);
 
