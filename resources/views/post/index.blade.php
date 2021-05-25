@@ -11,8 +11,7 @@
                     <div class="blog-box wow fadeIn">
                     <div class="post-media">
                         <a href="{{ route('post.show', $post->slug) }}" title="">
-                            <img src="@if($post->thumbnail) {{ asset("uploads/{$post->thumbnail}") }}
-                            @else {{ asset('no-image.png') }} @endif" alt="" class="img-fluid">
+                            <img src="{{ $post->getImage() }}" alt="" class="img-fluid">
                             <div class="hovereffect">
                                 <span></span>
                             </div>
@@ -30,7 +29,7 @@
                         </div><!-- end post-sharing -->
                         <h4><a href="{{ route('post.show', $post->slug) }}" title="">{{ $post->title }}</a></h4>
                         <p>{{ $post->description }}.</p>
-                        <small><a href="#" title="">{{ $post->category->title }}</a></small>
+                        <small><a href="{{ route('category.single', $post->category->slug) }}" title="">{{ $post->category->title }}</a></small>
                         <small>{{ $post->getPostDate() }}</small>
                         <small><i class="fa fa-eye"></i>{{ $post->views }}</small>
                     </div><!-- end meta -->

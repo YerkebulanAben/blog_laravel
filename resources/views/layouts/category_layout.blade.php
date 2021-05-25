@@ -4,19 +4,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>@yield('title')</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
 <link rel="shortcut icon" href="{{ asset('assets/front/images/favicon.ico') }}" type="image/x-icon" />
 <link rel="apple-touch-icon" href="{{ asset('assets/front/images/apple-touch-icon.png') }}">
 <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
-
 <link rel="stylesheet" href="{{ asset('assets/front/css/front.css') }}">
-
-<!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
 
 </head>
 <body>
@@ -28,17 +21,17 @@
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('home') }}"><img src="/assets/front/images/version/market-logo.png" alt=""></a>
+                <a class="navbar-brand" href="marketing-index.html"><img src="/assets/front/images/version/market-logo.png" alt=""></a>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('category.single', 'marketing') }}">Marketing</a>
+                            <a class="nav-link" href="{{ route('category.single', ['slug' => 'marketing']) }}">Marketing</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('category.single', 'make-money') }}">Make Money</a>
+                            <a class="nav-link" href="{{ route('category.single', ['slug' => 'make-money']) }}">Make Money</a>
                         </li>
                     </ul>
                     <form class="form-inline">
@@ -48,19 +41,16 @@
                 </div>
             </nav>
         </div><!-- end container-fluid -->
-    </header><!-- end market-header -->
+    </header>
 
-    @if(Request::is('/'))
-        @include('layouts.banner')
-    @endif
+    @yield('page-title')
 
-    <section class="section lb @if(!Request::is('/')) m3rem @endif">
+    <section class="section lb">
         <div class="container">
             <div class="row">
+                @include('layouts.sidebar')
 
                 @yield('content')
-
-                @include('layouts.sidebar')
 
             </div><!-- end row -->
         </div><!-- end container -->
@@ -76,7 +66,7 @@
                             <div class="list-group">
                                 <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="w-100 justify-content-between">
-                                        <img src="/assets/front/upload/small_04.jpg" alt="" class="img-fluid float-left">
+                                        <img src="upload/small_04.jpg" alt="" class="img-fluid float-left">
                                         <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
                                         <small>12 Jan, 2016</small>
                                     </div>
@@ -84,7 +74,7 @@
 
                                 <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="w-100 justify-content-between">
-                                        <img src="/assets/front/upload/small_05.jpg" alt="" class="img-fluid float-left">
+                                        <img src="upload/small_05.jpg" alt="" class="img-fluid float-left">
                                         <h5 class="mb-1">Let's make an introduction for creative life</h5>
                                         <small>11 Jan, 2016</small>
                                     </div>
@@ -92,7 +82,7 @@
 
                                 <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="w-100 last-item justify-content-between">
-                                        <img src="/assets/front/upload/small_06.jpg" alt="" class="img-fluid float-left">
+                                        <img src="upload/small_06.jpg" alt="" class="img-fluid float-left">
                                         <h5 class="mb-1">Did you see the most beautiful sea in the world?</h5>
                                         <small>07 Jan, 2016</small>
                                     </div>
@@ -109,7 +99,7 @@
                             <div class="list-group">
                                 <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="w-100 justify-content-between">
-                                        <img src="/assets/front/upload/small_01.jpg" alt="" class="img-fluid float-left">
+                                        <img src="upload/small_01.jpg" alt="" class="img-fluid float-left">
                                         <h5 class="mb-1">Banana-chip chocolate cake recipe with customs</h5>
                                         <span class="rating">
                                                 <i class="fa fa-star"></i>
@@ -123,7 +113,7 @@
 
                                 <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="w-100 justify-content-between">
-                                        <img src="/assets/front/upload/small_02.jpg" alt="" class="img-fluid float-left">
+                                        <img src="upload/small_02.jpg" alt="" class="img-fluid float-left">
                                         <h5 class="mb-1">10 practical ways to choose organic vegetables</h5>
                                         <span class="rating">
                                                 <i class="fa fa-star"></i>
@@ -137,7 +127,7 @@
 
                                 <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="w-100 last-item justify-content-between">
-                                        <img src="/assets/front/upload/small_03.jpg" alt="" class="img-fluid float-left">
+                                        <img src="upload/small_03.jpg" alt="" class="img-fluid float-left">
                                         <h5 class="mb-1">We are making homemade ravioli, nice and good</h5>
                                         <span class="rating">
                                                 <i class="fa fa-star"></i>
@@ -170,7 +160,6 @@
                     </div><!-- end widget -->
                 </div><!-- end col -->
             </div><!-- end row -->
-
             <div class="row">
                 <div class="col-md-12 text-center">
                     <br>
@@ -185,9 +174,7 @@
 
 </div><!-- end wrapper -->
 
-
 <script src="{{ asset('assets/front/js/front.js') }}"></script>
 
 </body>
 </html>
-

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController as Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/article/{slug}', [HomeController::class, 'show'])
     ->name('post.show');
+Route::get('/category/{slug}', [Category::class, 'show'])->name('category.single');
 
 Route::prefix('admin')->name('admin.')->middleware('admin')->group(function (){
    Route::get('/', [MainController::class, 'index'])->name('index');

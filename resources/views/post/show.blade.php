@@ -8,11 +8,11 @@
                 <div class="blog-title-area">
                     <ol class="breadcrumb hidden-xs-down">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">{{ $post->category->title }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('category.single', $post->category->slug) }}">{{ $post->category->title }}</a></li>
                         <li class="breadcrumb-item active">{{ $post->title }}</li>
                     </ol>
 
-                    <span class="color-yellow"><a href="{{ $post->category->title }}" title="">{{ $post->category->title }}</a></span>
+                    <span class="color-yellow"><a href="{{ route('category.single', $post->category->slug) }}" title="">{{ $post->category->title }}</a></span>
 
                     <h3>{{ $post->title }}</h3>
 
