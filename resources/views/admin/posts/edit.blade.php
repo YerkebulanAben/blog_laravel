@@ -66,8 +66,7 @@
                             <label for="thumbnail">Изображение</label>
                             <input class="form-control-file" type="file" id="thumbnail" name="thumbnail">
                             <div>
-                                <img src="@if($post->thumbnail) {{ asset("uploads/{$post->thumbnail}") }}
-                                @else {{ asset('no-image.png') }} @endif"
+                                <img src="{{ $post->getImage() }}"
                                      alt=""
                                 class="img-thumbnail mt-2" width="300px">
                             </div>
