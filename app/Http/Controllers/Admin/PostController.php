@@ -42,6 +42,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -49,16 +50,8 @@ class PostController extends Controller
             'category_id' => 'required|integer',
             'thumbnail' => 'nullable|image',
         ]);
-
         $data = $request->all();
-
-        if($request->hasFile('thumbnail')){
-            $data['thumbnail'] = Post::uploadImage($request);
-        }
-        else {
-            $data['thumbnail'] = null;
-        }
-
+        $data['thumbnail'] = Post::uploadImage($request);
         $post = Post::create($data);
         $post->tags()->sync($request->tags);
 
@@ -100,12 +93,10 @@ class PostController extends Controller
         $data = $request->all();
         $post = Post::find($id);
 
-        if($request->hasFile('thumbnail')){
-            $data['thumbnail'] = Post::uploadImage($request, $post->thumbnail);
+        if($path = Post::uploadImage($request, $post->thumbnail)){
+            $data['thumbnail'] = $path;
         }
-        else {
-            $data['thumbnail'] = $post->thumbnail;
-        }
+
         $post->update($data);
         $post->tags()->sync($request->tags);
 

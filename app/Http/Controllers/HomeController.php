@@ -13,7 +13,10 @@ class HomeController extends Controller
         return view('post.index', compact('posts'));
     }
 
-    public function show(){
-        return view('post.show');
+    public function show($slug){
+        $post = Post::where('slug', $slug)->firstOrFail();
+        $post->views++;
+        $post->update();
+        return view('post.show', compact('post'));
     }
 }

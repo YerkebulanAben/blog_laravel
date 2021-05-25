@@ -38,17 +38,13 @@ class Post extends Model
     public static function uploadImage(Request $request, $image = null)
     {
         if($request->hasFile('thumbnail')){
-            $folder = date('Y-m-d');
-            $path =  $request->file('thumbnail')->store("images/$folder");
             if($image){
                 Storage::delete($image);
-                return $path;
             }
-            return $path;
+            $folder = date('Y-m-d');
+            return $request->file('thumbnail')->store("images/$folder");
         }
-
         return null;
-
     }
 
     public function getPostDate(){
