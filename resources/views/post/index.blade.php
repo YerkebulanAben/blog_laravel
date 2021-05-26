@@ -29,7 +29,11 @@
                         </div><!-- end post-sharing -->
                         <h4><a href="{{ route('post.show', $post->slug) }}" title="">{{ $post->title }}</a></h4>
                         <p>{{ $post->description }}.</p>
+<<<<<<< HEAD
                         <small><a href="{{ route('category.single', $post->category->slug) }}" title="">{{ $post->category->title }}</a></small>
+=======
+                        <small><a href="#" title="">{{ $post->category->title }}</a></small>
+>>>>>>> 5b89d1de4c4da93af4aaa48441f9571b9a07fc20
                         <small>{{ $post->getPostDate() }}</small>
                         <small><i class="fa fa-eye"></i>{{ $post->views }}</small>
                     </div><!-- end meta -->
